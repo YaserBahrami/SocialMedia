@@ -48,5 +48,26 @@
 		<string>NotoSans-Italic.ttf</string>
 		<string>NotoSans-Regular.ttf</string>
 	</array>
+<!--	<key>CFBundleURLTypes</key>-->
+<!--	<array>-->
+<!--		<dict>-->
+<!--			<key>CFBundleURLSchemes</key>-->
+<!--			<array>-->
+<!--				<string>fb1201580986567707</string>-->
+<!--			</array>-->
+<!--		</dict>-->
+<!--	</array>-->
+<!--	<key>FacebookAppID</key>-->
+<!--	<string>1201580986567707</string>-->
+<!--	<key>FacebookDisplayName</key>-->
+<!--	<string>Yase­r­B­a­h­r­a­m­i­-­T­est1</string>-->
+<!--	<key>LSApplicationQueriesSchemes</key>-->
+<!--	<array>-->
+<!--		<string>fbapi</string>-->
+<!--		<string>fbauth2</string>-->
+<!--		<string>fbauth</string>-->
+<!--	</array>-->
+<!--	<key>NSPhotoLibraryUsageDescription</key>-->
+<!--	<string>{Human-readable reason for photo access}</string>-->
 </dict>
 </plist>
