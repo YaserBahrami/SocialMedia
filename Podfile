@@ -9,5 +9,5 @@ target 'SocialMedia' do
   pod 'Firebase/Auth’
   pod 'Firebase/Database’
   pod 'Firebase/Storage’
-  pod 'FBSDKLoginKit'
+  #pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
 end
