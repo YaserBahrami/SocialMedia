@@ -4,7 +4,7 @@
 target 'SocialMedia' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Firebase', '~> 2.3.3'
+   pod 'Firebase', '~> 2.3.3'
 
 
 
@@ -13,7 +13,7 @@ target 'SocialMedia' do
 #  pod 'Firebase/Database’
 #  pod 'Firebase/Storage’
 
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKCoreKit'
->>>>>>> EmailAuth
+   pod 'FBSDKLoginKit'
+   pod 'FBSDKCoreKit'
+
 end

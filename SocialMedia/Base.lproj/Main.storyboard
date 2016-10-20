@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -243,6 +243,7 @@
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XBX-m7-UBI">
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="height" constant="139" id="6gD-ue-2a1"/>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="YXG-b5-rXG"/>
                                                                     </constraints>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -282,13 +283,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="t69-Ah-TPa" firstAttribute="top" secondItem="JuR-Pd-Omr" secondAttribute="bottom" id="A4h-ZS-OKh"/>
-                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="top" secondItem="Xgc-dh-HJA" secondAttribute="bottom" id="EqD-TW-RQH"/>
-                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="trailing" secondItem="vxV-rd-TI5" secondAttribute="trailingMargin" id="XBO-OP-y6B"/>
-                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="centerX" secondItem="vxV-rd-TI5" secondAttribute="centerX" id="ded-vQ-UzK"/>
-                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="top" secondItem="Xgc-dh-HJA" secondAttribute="bottom" id="gRo-IA-K6H"/>
-                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="leading" secondItem="vxV-rd-TI5" secondAttribute="leadingMargin" id="xbT-9G-Eke"/>
-                            <constraint firstItem="t69-Ah-TPa" firstAttribute="top" secondItem="JuR-Pd-Omr" secondAttribute="bottom" id="xus-fB-2p3"/>
+                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="leading" secondItem="vxV-rd-TI5" secondAttribute="leadingMargin" id="LhG-dE-Y1f"/>
+                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="bottom" secondItem="t69-Ah-TPa" secondAttribute="top" id="jHf-OP-cC1"/>
+                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="top" secondItem="Xgc-dh-HJA" secondAttribute="bottom" id="jsw-2r-PEa"/>
+                            <constraint firstItem="JuR-Pd-Omr" firstAttribute="trailing" secondItem="vxV-rd-TI5" secondAttribute="trailingMargin" id="vTi-IM-U73"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="X6Q-JE-88G"/>
@@ -298,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZg-U1-olS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="-145"/>
+            <point key="canvasLocation" x="1793.5999999999999" y="-145.27736131934034"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yx0-c2-PJN">
