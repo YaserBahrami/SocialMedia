@@ -11,21 +11,17 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-<<<<<<< HEAD:SocialMedia/ViewController.swift
-class ViewController: UIViewController {
-
-=======
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var UserEmail: UITextField!
     @IBOutlet weak var UserPass: UITextField!
     
     
->>>>>>> EmailAuth:SocialMedia/SignInViewController.swift
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     

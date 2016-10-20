@@ -101,12 +101,10 @@
 		4353EDBC1DA57A190099FB88 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				4353EDAC1DA579D10099FB88 /* ViewController.swift */,
-=======
+
 				4353EDAC1DA579D10099FB88 /* SignInViewController.swift */,
 				43969A7F1DB916C200B049B6 /* FeedViewController.swift */,
->>>>>>> EmailAuth
+
 			);
 			name = Controller;
 			sourceTree = "<group>";
