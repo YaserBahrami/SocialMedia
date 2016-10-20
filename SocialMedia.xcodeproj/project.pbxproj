@@ -20,7 +20,9 @@
 		4353EDCC1DA580270099FB88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EDCB1DA580270099FB88 /* Constants.swift */; };
 		4353EDCE1DA670FB0099FB88 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EDCD1DA670FB0099FB88 /* MaterialButton.swift */; };
 		4353EDD01DA690BD0099FB88 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EDCF1DA690BD0099FB88 /* MaterialTextField.swift */; };
-		43B5E8DD1DA7C3D1000A74D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B5E8DC1DA7C3D1000A74D6 /* GoogleService-Info.plist */; };
+		43969A801DB916C200B049B6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43969A7F1DB916C200B049B6 /* FeedViewController.swift */; };
+		43B7DE101DA8BB99006EAD06 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7DE0F1DA8BB99006EAD06 /* DataService.swift */; };
+		43F52C7F1DB91C9E006D9B48 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F52C7E1DB91C9E006D9B48 /* PostCell.swift */; };
 		57EAD7E367D6CB9AB8A9669F /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098951139E8D75A16A467F82 /* Pods_SocialMedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +43,9 @@
 		4353EDCB1DA580270099FB88 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4353EDCD1DA670FB0099FB88 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		4353EDCF1DA690BD0099FB88 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
-		43B5E8DC1DA7C3D1000A74D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43969A7F1DB916C200B049B6 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		43B7DE0F1DA8BB99006EAD06 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		43F52C7E1DB91C9E006D9B48 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		4CAEE0E0271E614FF8F0AE9D /* Pods-SocialMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialMedia/Pods-SocialMedia.debug.xcconfig"; sourceTree = "<group>"; };
 		539463732B1DE9F07E5FB906 /* Pods-SocialMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialMedia/Pods-SocialMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +83,7 @@
 		4353EDA91DA579D10099FB88 /* SocialMedia */ = {
 			isa = PBXGroup;
 			children = (
+				43B7DE0E1DA8BB61006EAD06 /* Services */,
 				4353EDCA1DA580150099FB88 /* Util */,
 				4353EDBF1DA57A310099FB88 /* Resources */,
 				4353EDBE1DA57A2A0099FB88 /* Model */,
@@ -89,7 +94,6 @@
 				4353EDB11DA579D10099FB88 /* Assets.xcassets */,
 				4353EDB31DA579D10099FB88 /* LaunchScreen.storyboard */,
 				4353EDB61DA579D10099FB88 /* Info.plist */,
-				43B5E8DC1DA7C3D1000A74D6 /* GoogleService-Info.plist */,
 			);
 			path = SocialMedia;
 			sourceTree = "<group>";
@@ -97,7 +101,12 @@
 		4353EDBC1DA57A190099FB88 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				4353EDAC1DA579D10099FB88 /* ViewController.swift */,
+=======
+				4353EDAC1DA579D10099FB88 /* SignInViewController.swift */,
+				43969A7F1DB916C200B049B6 /* FeedViewController.swift */,
+>>>>>>> EmailAuth
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -108,6 +117,7 @@
 				4353EDC81DA57FC30099FB88 /* MaterialView.swift */,
 				4353EDCD1DA670FB0099FB88 /* MaterialButton.swift */,
 				4353EDCF1DA690BD0099FB88 /* MaterialTextField.swift */,
+				43F52C7E1DB91C9E006D9B48 /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -136,6 +146,14 @@
 				4353EDCB1DA580270099FB88 /* Constants.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		43B7DE0E1DA8BB61006EAD06 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				43B7DE0F1DA8BB99006EAD06 /* DataService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		E1E67C6EB285F0F35FDE982B /* Pods */ = {
@@ -219,7 +237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4353EDC41DA57ADC0099FB88 /* NotoSans-Bold.ttf in Resources */,
-				43B5E8DD1DA7C3D1000A74D6 /* GoogleService-Info.plist in Resources */,
 				4353EDB51DA579D10099FB88 /* LaunchScreen.storyboard in Resources */,
 				4353EDC51DA57ADC0099FB88 /* NotoSans-BoldItalic.ttf in Resources */,
 				4353EDC61DA57ADC0099FB88 /* NotoSans-Italic.ttf in Resources */,
@@ -285,10 +302,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4353EDD01DA690BD0099FB88 /* MaterialTextField.swift in Sources */,
+				43B7DE101DA8BB99006EAD06 /* DataService.swift in Sources */,
 				4353EDC91DA57FC30099FB88 /* MaterialView.swift in Sources */,
 				4353EDAD1DA579D10099FB88 /* ViewController.swift in Sources */,
 				4353EDAB1DA579D10099FB88 /* AppDelegate.swift in Sources */,
+				43F52C7F1DB91C9E006D9B48 /* PostCell.swift in Sources */,
 				4353EDCC1DA580270099FB88 /* Constants.swift in Sources */,
+				43969A801DB916C200B049B6 /* FeedViewController.swift in Sources */,
 				4353EDCE1DA670FB0099FB88 /* MaterialButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

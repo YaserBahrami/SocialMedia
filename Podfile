@@ -4,10 +4,16 @@
 target 'SocialMedia' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  #pod 'Firebase'
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth’
-  pod 'Firebase/Database’
-  pod 'Firebase/Storage’
-  #pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
+  pod 'Firebase', '~> 2.3.3'
+
+
+
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Auth’
+#  pod 'Firebase/Database’
+#  pod 'Firebase/Storage’
+
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+>>>>>>> EmailAuth
 end

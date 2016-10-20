@@ -1,4 +1,5 @@
 PODS:
+<<<<<<< HEAD
   - Firebase/Auth (3.7.0):
     - Firebase/Core
     - FirebaseAuth (= 3.0.5)
@@ -58,5 +59,31 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
 
 PODFILE CHECKSUM: f1d9939f6194e336b4f530e587ada02f751def8b
+=======
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.16.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.16.0):
+    - FBSDKCoreKit
+  - Firebase (2.3.3)
+
+DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - Firebase (~> 2.3.3)
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 9a514a55a7d05190f64d4ef09502737588b5b561
+  Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
+
+PODFILE CHECKSUM: cd7a3282aed6715ffeee601b5f0574e9fb453f02
+>>>>>>> EmailAuth
 
 COCOAPODS: 1.0.1
