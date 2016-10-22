@@ -57,6 +57,9 @@ class SignInViewController: UIViewController {
                     if error != nil {
                         print("Login failed. \(error)")
                     } else {
+                        let user = ["Provider" : (authData?.provider)!,"Blah":"blah"]
+                        DataService.ds.CreateFireBaseUser(uid: (authData?.uid)!, user: user)
+                        
                         print("Logged In!\(authData)")
                         UserDefaults.standard.setValue(authData?.uid, forKey: KEY_UID)
                         self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
@@ -134,11 +137,23 @@ class SignInViewController: UIViewController {
                             if error != nil {
                                 let error1 = error as! NSError
                                 self.CheckErrorType(error: error1)
-                                // There was an error creating the account
                             } else {
                                 UserDefaults.standard.setValue(result?[KEY_UID], forKey: KEY_UID)
                                 
-                                DataService.ds.REF_BASE.authUser(email, password: pass, withCompletionBlock: nil)
+//                                DataService.ds.REF_BASE.authUser(email, password: pass, withCompletionBlock: nil)
+                                DataService.ds.REF_BASE.authUser(email, password: pass, withCompletionBlock: { (error, authData) in
+                                    
+                                    if error != nil{
+                                        self.CheckErrorType(error: error as! NSError)
+                                    }
+                                    else{
+                                        let user = ["Provider" : (authData?.provider)!,"Blah":"emailTest"]
+                                        DataService.ds.CreateFireBaseUser(uid: (authData?.uid)!, user: user)
+                                    }
+                                    
+                                    
+                                })
+                                
                                 self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
                             }
             })

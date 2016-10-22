@@ -22,6 +22,7 @@
 		4353EDD01DA690BD0099FB88 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4353EDCF1DA690BD0099FB88 /* MaterialTextField.swift */; };
 		43969A801DB916C200B049B6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43969A7F1DB916C200B049B6 /* FeedViewController.swift */; };
 		43B7DE101DA8BB99006EAD06 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7DE0F1DA8BB99006EAD06 /* DataService.swift */; };
+		43F0BE711DBB85E600C4673D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F0BE701DBB85E600C4673D /* Post.swift */; };
 		43F52C7F1DB91C9E006D9B48 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F52C7E1DB91C9E006D9B48 /* PostCell.swift */; };
 		57EAD7E367D6CB9AB8A9669F /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098951139E8D75A16A467F82 /* Pods_SocialMedia.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		4353EDCF1DA690BD0099FB88 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		43969A7F1DB916C200B049B6 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		43B7DE0F1DA8BB99006EAD06 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		43F0BE701DBB85E600C4673D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		43F52C7E1DB91C9E006D9B48 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		4CAEE0E0271E614FF8F0AE9D /* Pods-SocialMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialMedia/Pods-SocialMedia.debug.xcconfig"; sourceTree = "<group>"; };
 		539463732B1DE9F07E5FB906 /* Pods-SocialMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialMedia/Pods-SocialMedia.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		4353EDBE1DA57A2A0099FB88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				43F0BE701DBB85E600C4673D /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				4353EDCC1DA580270099FB88 /* Constants.swift in Sources */,
 				43969A801DB916C200B049B6 /* FeedViewController.swift in Sources */,
 				4353EDCE1DA670FB0099FB88 /* MaterialButton.swift in Sources */,
+				43F0BE711DBB85E600C4673D /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
