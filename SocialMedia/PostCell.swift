@@ -51,7 +51,11 @@ class PostCell: UITableViewCell {
                 }).validate(contentType: ["image/*"])
             }
         }else{
+            
             self.showcaseImg.isHidden = true
+            
+            
+            
         }
     }
     

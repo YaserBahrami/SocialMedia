@@ -11,6 +11,7 @@ import Firebase
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var showcaseImg2: UIImageView!
     var posts = [Post]()
     static var imageCache = NSCache<AnyObject, AnyObject>()
     
@@ -21,6 +22,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.estimatedRowHeight = 381
         
         DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
 //            print(snapshot?.value)
@@ -54,6 +56,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts[indexPath.row] 
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell{
+            
+            cell.request?.cancel()
+            
             var img: UIImage?
             if let url = post.imageUrl{
                 img = FeedViewController.imageCache.object(forKey: url as AnyObject) as? UIImage
@@ -66,6 +71,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let post = posts[indexPath.row]
+        
+        if post.imageUrl == "" || post.imageUrl == nil {
+            return tableView.estimatedRowHeight - 150
+        }else{
+            return tableView.estimatedRowHeight
+        }
+
+    }
+    
+    
+    
+    
+    
     
 
 }
