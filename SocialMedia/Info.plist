@@ -75,7 +75,7 @@
 		<string>fb-messenger-api20140430</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>{Human-readable reason for photo access}</string>
+	<string>برای بارگذاری تصویر مورد نظر، دسترسی به گالری شما مورد نیاز می‌باشد.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

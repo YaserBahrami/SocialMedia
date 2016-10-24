@@ -8,21 +8,34 @@
 
 import UIKit
 import Firebase
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showcaseImg2: UIImageView!
     var posts = [Post]()
     static var imageCache = NSCache<AnyObject, AnyObject>()
     
+    @IBOutlet weak var imageSelector: UIImageView!
+    @IBOutlet weak var PostTexField: MaterialTextField!
     
+    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.estimatedRowHeight = 381
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
 //            print(snapshot?.value)
@@ -44,6 +57,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         })
     }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -83,6 +101,47 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
     }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        imageSelector.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
+    
+    @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func makePost(_ sender: AnyObject) {
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
