@@ -1,4 +1,4 @@
-//
+ //
 //  PostCell.swift
 //  SocialMedia
 //
@@ -53,10 +53,8 @@ class PostCell: UITableViewCell {
         }else{
             
             self.showcaseImg.isHidden = true
-            
-            
-            
         }
+        
     }
     
 
