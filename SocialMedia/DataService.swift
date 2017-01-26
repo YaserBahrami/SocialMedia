@@ -18,8 +18,8 @@ class DataService{
     private var _REF_BASE = Firebase(url: "\(URL_BASE)")
     private var _REF_POSTS = Firebase(url: "\(URL_BASE)/Posts")
     private var _REF_USERS = Firebase(url: "\(URL_BASE)/Users")
-
-    
+    private var _ImageShack_API_URL = "https://post.imageshack.us/upload_api.php"
+    private var _ImageShack_API_KEY = "Z4BEN9YI4a24cf7df738490d7a0941ba563e3e54"
     var REF_BASE: Firebase{
         return _REF_BASE!
     }
@@ -28,6 +28,12 @@ class DataService{
     }
     var REF_USERS: Firebase{
         return _REF_USERS!
+    }
+    var ImageShack_API_URL: String{
+        return _ImageShack_API_URL
+    }
+    var ImageShack_API_KEY: String{
+        return _ImageShack_API_KEY
     }
     
     var REF_USER_CURRENT: Firebase{

@@ -17,7 +17,6 @@ class Post{
     private var _postKey: String!
     private var _postRef: Firebase!
     
-    
     var postDescription: String {
         return _postDescription
     }
@@ -34,7 +33,7 @@ class Post{
     var postKey: String{
         return _postKey
     }
-    
+
     init(description: String, imageUrl: String?, userName: String) {
         
         self._postDescription = description
@@ -55,7 +54,12 @@ class Post{
         if let desc =  dictionary["Description"] as? String{
             self._postDescription = desc
         }
-        
+        if let userName =  dictionary["UserName"] as? String{
+            self._userName = userName
+        }
+        if let userName =  dictionary["UserName"] as? String{
+            self._userName = userName
+        }
         self._postRef = DataService.ds.REF_POSTS.child(byAppendingPath: self._postKey!)
     }
     

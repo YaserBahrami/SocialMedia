@@ -17,6 +17,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likeImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
     
     var post: Post!
     var request : Request?
@@ -31,6 +32,10 @@ class PostCell: UITableViewCell {
         likeImage.addGestureRecognizer(tap)
         likeImage.isUserInteractionEnabled = true
         
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
+        imageTap.numberOfTapsRequired = 1
+        showcaseImg.addGestureRecognizer(imageTap)
+        showcaseImg.isUserInteractionEnabled = true
     }
 
     override func draw(_ rect: CGRect) {
@@ -45,6 +50,7 @@ class PostCell: UITableViewCell {
         likeRef = DataService.ds.REF_USER_CURRENT.child(byAppendingPath: "Likes").child(byAppendingPath: post.postKey);
         
         self.descriptionText.text = post.postDescription
+        self.userName.text = post.userName
         self.likesLabel.text = "\(post.likes)"
         
         if post.imageUrl != nil{
@@ -67,7 +73,7 @@ class PostCell: UITableViewCell {
         }
         
         likeRef?.observeSingleEvent(of: .value, with: { snapshot in
-            if let doesNotExist = snapshot?.value as? NSNull{
+            if (snapshot?.value as? NSNull) != nil{
                 //this means we have not likes this specific posts.
                 self.likeImage.image = UIImage(named: "heart-empty")
             }
@@ -82,7 +88,7 @@ class PostCell: UITableViewCell {
     func likeTapped(sender: UITapGestureRecognizer) {
         likeRef.observeSingleEvent(of: .value, with: { snapshot in
             
-            if let doesNotExist = snapshot?.value as? NSNull {
+            if (snapshot?.value as? NSNull) != nil {
                 self.likeImage.image = UIImage(named: "heart-full")
                 self.post.adjustLikes(addLike: true)
                 self.likeRef.setValue(true)
@@ -96,6 +102,11 @@ class PostCell: UITableViewCell {
         })
     }
 
+    func imageTapped(_ sender: UITapGestureRecognizer) {
+    }
     
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        sender.view?.removeFromSuperview()
+    }
 
 }

@@ -16,15 +16,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var UserEmail: UITextField!
     @IBOutlet weak var UserPass: UITextField!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -94,28 +93,21 @@ class SignInViewController: UIViewController {
         }else{
             showErrorAlert(title: "فیلد الزامی", msg: "لطفا ایمیل و پسورد را وارد نمایید.")
         }
-        
     }
-    
     func showErrorAlert(title: String, msg: String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title: "باشه", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
     }
-    
     func showAlertForCreateUser(title: String, msg: String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "باشه", style: .default, handler: {action in self.CreateFireBaseUser()})
-        let action2 = UIAlertAction(title: "نوموخوام", style: .destructive, handler: nil)
-        
+        let action = UIAlertAction(title: "عضویت", style: .default, handler: {action in self.GetUserNameInAlert()})
+        let action2 = UIAlertAction(title: "ورود مجدد", style: .destructive, handler: nil)
         alert.addAction(action)
         alert.addAction(action2)
         present(alert, animated: true, completion: nil)
-        
     }
-    
     func CheckErrorType (error: NSError){
         switch error.code{
         case Status_Invalid_Email : self.showErrorAlert(title: "خطا", msg: "ایمیل را در فرمت درست وارد کنید.")
@@ -125,10 +117,22 @@ class SignInViewController: UIViewController {
         default : self.showErrorAlert(title: "خطا", msg: "خطایی رخ داده است لطفا اطلاعات زیر را به پشتیبانی اعلام نمایید." + "\(error.description)")
         }
     }
-    
-    func CreateFireBaseUser(){
+    func GetUserNameInAlert(){
+        let alert = UIAlertController(title: "نام کاربری", message: "لطفا نام کاربری خود را وارد نمایید.", preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            textField.placeholder = "نام کاربری"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+            self.CreateFireBaseUser(userName: textField?.text ?? "anonymous")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func CreateFireBaseUser(userName: String){
         let ref = DataService.ds.REF_BASE
+        UserDefaults.standard.setValue(userName, forKey: KEY_USERNAME)
         let email = UserEmail.text
         let pass = UserPass.text
         if email != "", pass != ""{
@@ -139,19 +143,14 @@ class SignInViewController: UIViewController {
                                 self.CheckErrorType(error: error1)
                             } else {
                                 UserDefaults.standard.setValue(result?[KEY_UID], forKey: KEY_UID)
-                                
-//                                DataService.ds.REF_BASE.authUser(email, password: pass, withCompletionBlock: nil)
                                 DataService.ds.REF_BASE.authUser(email, password: pass, withCompletionBlock: { (error, authData) in
-                                    
                                     if error != nil{
                                         self.CheckErrorType(error: error as! NSError)
                                     }
                                     else{
-                                        let user = ["Provider" : (authData?.provider)!,"Blah":"emailTest"]
+                                        let user = ["Provider" : (authData?.provider)!,"UserName":userName]
                                         DataService.ds.CreateFireBaseUser(uid: (authData?.uid)!, user: user)
                                     }
-                                    
-                                    
                                 })
                                 
                                 self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
@@ -160,17 +159,8 @@ class SignInViewController: UIViewController {
         }else{
             showErrorAlert(title: "فیلد الزامی", msg: "لطفا ایمیل و پسورد را وارد نمایید.")
         }
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     

@@ -14,14 +14,13 @@ import Alamofire
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var showcaseImg2: UIImageView!
     var posts = [Post]()
     var imageSelected = false
     static var imageCache = NSCache<AnyObject, AnyObject>()
     
     @IBOutlet weak var imageSelector: UIImageView!
     @IBOutlet weak var PostTexField: MaterialTextField!
-    
+    @IBOutlet weak var postButton: MaterialButton!
     
     var imagePicker: UIImagePickerController!
     
@@ -30,8 +29,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,22 +39,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: { snapshot in
-            //            print(snapshot?.value)
             self.posts = []
             if let snapshots = snapshot?.children.allObjects as? [FDataSnapshot] {
                 
                 for snap in snapshots{
-                    //                   print("SNAP: \(snap)")
-                    
                     if let postDict = snap.value as? Dictionary<String, AnyObject>{
                         let key = snap.key
                         let post = Post(postKey: key!, dictionary: postDict)
-                        
                         self.posts.append(post)
                     }
                 }
             }
-            
+            self.posts.reverse()
             self.tableView.reloadData()
         })
     }
@@ -110,7 +103,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         imageSelector.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
         imageSelected  = true
         
     }
@@ -121,17 +113,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func makePost(_ sender: AnyObject) {
+        postButton.isEnabled = false
+        PostTexField.isEnabled = false
         
         if let text = PostTexField.text, text != ""{
             
             if let img = imageSelector.image, imageSelected == true {
-                let urlString = "https://post.imageshack.us/upload_api.php"
-                //                let url = NSURL(string: urlString)
+                let urlString = DataService.ds.ImageShack_API_URL
                 
                 //Compress
                 let imgData = UIImageJPEGRepresentation(img, 0.2)
-                
-                let apiKey = "Z4BEN9YI4a24cf7df738490d7a0941ba563e3e54".data(using: String.Encoding.utf8)!
+                let apiKey = DataService.ds.ImageShack_API_KEY.data(using: String.Encoding.utf8)!
                 let keyJSON = "json".data(using: String.Encoding.utf8)!
                 
                 //upload to ImageShack API
@@ -159,15 +151,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                 })
             }else{
-                self.postToFirebase(nil)
+                let alert = UIAlertController(title: "پست نامعتبر", message: "حتما باید عکسی آپلود شود.", preferredStyle: UIAlertControllerStyle.alert)
+                let action = UIAlertAction(title: "باشه", style: .default, handler: nil)
+                alert.addAction(action)
+                present(alert, animated: true, completion: nil)
+                
+                postButton.isEnabled = true
+                PostTexField.isEnabled = true
+                
             }
+        }else{
+            let alert = UIAlertController(title: "پست نامعتبر", message: "متن نمیتواند خالی باشد", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "باشه", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            postButton.isEnabled = true
+            PostTexField.isEnabled = true
         }
     }
     
     func postToFirebase(_ imgUrl: String?){
         var post: Dictionary<String,AnyObject> = [
             "Description" : PostTexField.text! as AnyObject,
-            "Likes" : 0 as AnyObject
+            "Likes" : 0 as AnyObject,
+            "UserName" : UserDefaults.standard.value(forKey: KEY_USERNAME) as AnyObject,
+            "DateTime": "\(NSDate())" as AnyObject
         ]
         if imgUrl != nil{
             post["ImageUrl"] = imgUrl! as AnyObject?
@@ -182,10 +191,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         imageSelected = false
         
+        postButton.isEnabled = true
+        PostTexField.isEnabled = true
+        
         tableView.reloadData()
     }
     
     
+    @IBAction func logoutBtn(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: KEY_UID)
+        let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInStoryboard") as! SignInViewController
+        navigationController?.pushViewController(signInVC, animated: true)
+    }
     
     
     

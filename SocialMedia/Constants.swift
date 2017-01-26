@@ -13,7 +13,7 @@ let Shadow_Color: CGFloat = 157.0 / 255.0;
 
 //Keys
 let KEY_UID = "uid"
-
+let KEY_USERNAME = "username"
 //Segues
 let SEGUE_LOGGED_IN = "loggedInSegue"
 
