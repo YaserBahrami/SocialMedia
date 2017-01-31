@@ -45,7 +45,6 @@ class SignInViewController: UIViewController {
         
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (facebookResult, facebookError) in
             
-            
             if facebookError != nil {
                 print("Facebook login failed. Error \(facebookError)")
             } else {
@@ -77,11 +76,9 @@ class SignInViewController: UIViewController {
         
         if email != "", pass != "" {
             ref.authUser(email, password: pass, withCompletionBlock: { error, authData in
-                
-                let error1 : NSError = error as! NSError
-                
-                
+
                 if error != nil{
+                    let error1 : NSError = error as! NSError
                     self.CheckErrorType(error: error1)
                 }
                 else {

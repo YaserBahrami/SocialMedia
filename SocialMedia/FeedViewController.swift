@@ -181,19 +181,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if imgUrl != nil{
             post["ImageUrl"] = imgUrl! as AnyObject?
         }
-        
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
-        
         firebasePost?.setValue(post)
         
         PostTexField.text = nil
         imageSelector.image = UIImage(named: "camera")
-        
         imageSelected = false
-        
         postButton.isEnabled = true
         PostTexField.isEnabled = true
-        
         tableView.reloadData()
     }
     

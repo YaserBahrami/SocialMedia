@@ -57,9 +57,6 @@ class Post{
         if let userName =  dictionary["UserName"] as? String{
             self._userName = userName
         }
-        if let userName =  dictionary["UserName"] as? String{
-            self._userName = userName
-        }
         self._postRef = DataService.ds.REF_POSTS.child(byAppendingPath: self._postKey!)
     }
     
